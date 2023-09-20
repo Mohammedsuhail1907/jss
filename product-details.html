@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles for the header */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Styles for the main content */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        /* Styles for the product details section */
+        .product-details {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        /* Styles for the "Go Back" link */
+        a {
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Details</h1>
+    </header>
+
+    <main>
+        <!-- Product details will be displayed here -->
+    </main>
+
+    <a href="javascript:history.back()">Go Back</a>
+
+    <script>
+        // Function to retrieve query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the product index and image filename from the URL
+        const productImage = getQueryParam('image');
+
+        // Get the selected product data from sessionStorage
+        const selectedProduct = JSON.parse(sessionStorage.getItem('selectedProduct'));
+
+        // Display the product details based on the selected product
+        if (selectedProduct) {
+            const mainContent = document.querySelector('main');
+            // Display the product image based on the passed image filename
+            mainContent.innerHTML = `
+                <section class="product-details">
+                    <img src="${productImage}" alt="${selectedProduct.name}">
+                    <h2>${selectedProduct.name}</h2>
+                    <p><strong>Description:</strong> ${selectedProduct.description}</p>
+                    <p><strong>Price:</strong> ${selectedProduct.price}</p>
+                    <!-- Add more product details here -->
+                </section>
+            `;
+        } else {
+            // Handle the case where the selected product data is not available
+            const mainContent = document.querySelector('main');
+            mainContent.innerHTML = '<p>Product not found.</p>';
+        }
+    </script>
+</body>
+</html>
