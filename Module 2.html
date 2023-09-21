@@ -6,18 +6,107 @@
     <title>Medications and Healthcare Products Catalog</title>
     <style>
         /* Reset some default styles */
-        body, h1, h2, p {
-            margin: 0;
-            padding: 0;
-        }
+body, h1, h2, p {
+    margin: 0;
+     padding: 0;
+}
 
-        /* Basic styles for the header */
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
+.header 
+{
+    background-color: grey;
+    color: white;
+    text-align: center;
+    height: 120px;
+}
+.header-box
+{
+width: 100%;
+height: 100%;
+}
+.web-name
+{
+    text-decoration: none;
+    color: white;
+    font-size: 36px;
+}
+.logo-image
+{
+    float: left;
+    width: 7%;
+    height: 100%;
+     
+}
+.logo-text
+{
+  
+    float: left;
+    height: 100%;
+    width: 45%;
+}
+.header-empty
+{
+    height: 100%;
+    float: left;
+    width: 25%;
+     
+}
+.header-last
+{
+    
+    float: left;
+    height: 100%;
+    width: 23%;
+}
+.header-icons
+{
+    margin: 24px;
+    height: 60%;
+    width: 80%;
+
+}
+.header-icons-allign
+{
+    height: 75%;
+    float: left;
+    margin: 3px;
+    width: 91%;
+    margin-top: 19px;
+    margin-left: 11px;
+}
+.empty-icon
+{
+    float: left;
+    height: 100%;
+    width: 23%;
+}
+.cart-icon
+{
+    float: left;
+    height: 100%;
+    width: 33%;
+    margin-right: 10px;
+}
+.profile-icon
+ {
+    float: left;
+    height: 100%;
+    width: 33%;
+    background-color: gray;
+ }
+ .cart-png
+ {
+    size: auto;
+    height: 100%;
+    width: 100%;
+    border-radius: 27px;
+ }
+ .header-profile-icon
+ {
+    size: auto;
+    height: 100%;
+    width: 100%;
+    border-radius: 33px;
+ }
 
         /* Styles for the search container */
         .search-container {
@@ -128,9 +217,38 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Medications and Healthcare Products</h1>
-    </header>
+    <div class="header"> 
+        <div class="header-box">
+        <div class="logo-image">
+
+        </div>
+        <div class="logo-text">
+        <a class="web-name" href="lachu.html">Medications and Healthcare Products</a>
+    </div>
+    <div class="header-empty">
+
+    </div>
+    <div class="header-last">
+<div  class="header-icons">
+    <div class="header-icons-allign">
+        <div class="empty-icon">
+            
+        </div>
+        <div class="cart-icon">
+            <img class="cart-png" src="cart-icon.png"  alt="cart" >
+
+        </div>
+        <div class="profile-icon">
+            <img class="header-profile-icon" src="header-profile-icon.png" alt="profile-icon">
+        </div>
+
+    </div>
+
+</div>
+    </div>
+    </div>
+    </div>
+
 
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search for products...">
