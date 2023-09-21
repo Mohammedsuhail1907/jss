@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .cart {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .cart button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 5%;
+        }
+
+        .cart button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-button {
+            background-color: #ff4444;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+    <!-- Shopping Cart -->
+    <div class="cart">
+        <ul id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </ul>
+        <p>Total: ₹<span id="cart-total">0.00</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        // Initialize cart items and total
+        const cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+        // Function to calculate the cart total
+        function calculateCartTotal() {
+            return cartItems.reduce((total, item) => total + parseFloat(item.MRP), 0);
+        }
+
+        // Function to update the cart display
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+
+            // Clear the existing cart items
+            cartItemsList.innerHTML = '';
+
+            cartItems.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ₹${item.MRP}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteCartItem(item); // Pass the item object to deleteCartItem
+                listItem.appendChild(deleteButton);
+                cartItemsList.appendChild(listItem);
+            });
+
+            // Calculate the cart total
+            const cartTotal = calculateCartTotal();
+
+            // Update the cart total
+            cartTotalSpan.textContent = cartTotal.toFixed(2);
+        }
+
+        // Function to delete a cart item by item object
+        function deleteCartItem(item) {
+            const itemIndex = cartItems.indexOf(item);
+            if (itemIndex !== -1) {
+                // Remove the item from the cartItems array
+                cartItems.splice(itemIndex, 1);
+
+                // Update the cart data in sessionStorage
+                sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+                // Update the cart display
+                updateCartDisplay();
+            }
+        }
+
+        // Function to simulate checkout (clear the cart)
+        function checkout() {
+            cartItems.length = 0; // Clear the cart
+
+            // Update the cart data in sessionStorage
+            sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Update the cart display
+            updateCartDisplay();
+        }
+
+        // Update the cart display when the page loads
+        window.onload = function () {
+            updateCartDisplay();
+        };
+    </script>
+</body>
+</html>
