@@ -78,7 +78,7 @@
 
         // Function to calculate the cart total
         function calculateCartTotal() {
-            return cartItems.reduce((total, item) => total + parseFloat(item.MRP), 0);
+            return cartItems.reduce((total, item) => total + (parseFloat(item.MRP) * item.quantity), 0);
         }
 
         // Function to update the cart display
