@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        header {
+            background-color:gray;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+         
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+         
+    .product-details {
+    border: 1px solid #ccc;
+    padding: 66px;
+    margin: 34px;
+    width: 760px;
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(225, 230, 230);
+}
+
+        .product-details img {
+            max-width: 58%;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+ 
+        a {
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Details</h1>
+    </header>
+
+    <main>
+        
+    </main>
+
+    <a href="javascript:history.back()">Go Back</a>
+
+    <script>
+        
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+         
+        const productImage = getQueryParam('image');
+
+         
+        const selectedProduct = JSON.parse(sessionStorage.getItem('selectedProduct'));
+
+        
+        if (selectedProduct) {
+            const mainContent = document.querySelector('main');
+             
+            mainContent.innerHTML = `
+                <section class="product-details">
+                    <img src="${productImage}" alt="${selectedProduct.name}">
+                    <h2>${selectedProduct.name}</h2>
+                    <p><strong>Description:</strong> ${selectedProduct.description}</p>
+                    <p><strong>MRP:</strong> ${selectedProduct.MRP}</p>
+                    <!-- Add more product details here -->
+                </section>
+            `;
+        } else {
+             
+            const mainContent = document.querySelector('main');
+            mainContent.innerHTML = '<p>Product not found.</p>';
+        }
+    </script>
+</body>
+</html>

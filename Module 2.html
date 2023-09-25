@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Pharmacy</title>
+    <style>
+body, h1, h2, p {
+    margin: 0;
+     padding: 0;
+     background-color: #16c8f057;
+}   
+
+.header 
+{
+    background-color: #faf9f9;
+    background-image: url(../ONLINE\ PHARMACY/images/header.jpg);
+    width: 98%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    text-align:center;
+    height: auto;
+    margin-left: 1%;
+}
+.header-box
+{
+width: 100%;
+height: 100%;
+}
+.web-name
+    {
+        font-size: 54px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.logo-image
+{
+    float: left;
+    width: 7%;
+    height: 100%;
+     
+}
+.logo-text
+{
+  
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+.header-empty
+{
+    height: 100%;
+    float: left;
+    width: 17%;
+     
+}
+.header-last
+{
+    
+    float: left;
+    height: 100%;
+    width: 23%;
+    margin-left: 270px;
+}
+.header-icons
+{
+    margin: 24px;
+    height: 60%;
+    width: 80%;
+
+}
+.header-icons-allign
+{
+    height: 75%;
+    float: left;
+    margin: 3px;
+    width: 55%;
+    margin-top: 19px;
+    margin-left:107px;
+}
+.empty-icon
+{
+    float: left;
+    height: 100%;
+    width: 23%;
+}
+.cart-icon
+{
+    float: left;
+    height: 100%;
+    width: 33%;
+    margin-right: 10px;
+}
+.profile-icon
+ {
+    float: left;
+    height: 100%;
+    width: 33%;
+    background-color: white;
+    border-radius: 10px;
+ }
+ .cart-png
+ {
+    size: auto;
+    float: left;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    
+ }
+ .header-profile-icon
+ {
+    size: auto;
+    height: 100%;
+    width: 100%;
+    border-radius: 33px;
+    float: left;
+}
+        
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        
+        }
+
+         
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+            border-radius: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #searchButton {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        
+        .filter-container {
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        #category
+        {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        #sortBy
+        { 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        #applyFilters
+        {
+            
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        select, button {
+            padding: 10px;
+        }
+
+        
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        
+        .product {
+            
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+    background-color: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        
+        .product button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #0056b3;
+        }
+
+         
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+         
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .product img {
+    max-width: 100%;  
+    height: auto;     
+    width: 300px;    
+    height: 200px;   
+    margin-bottom: 10px;
+}
+.llll
+{
+    height: -webkit-fill-available;
+}
+#cartCounter{
+    color: #000;
+}
+ 
+
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <div class="header-box">
+        <div class="logo-image">
+
+        </div>
+        <div class="logo-text">
+            <div class="llll">
+        <a class="web-name" href="Module 2.html"> One Yes online pharmacy</a>
+    </div>
+        </div>
+    <div class="header-empty">
+
+    </div>
+    <div class="header-last">
+<div  class="header-icons">
+    <div class="header-icons-allign">
+        
+        <a href="cart.html">
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <img class="cart-png" src="images/cart-icon.gif" alt="cart" id="cartIcon">
+                </a>
+                <span id="cartCounter">0</span>
+            </div>
+        <div class="profile-icon">
+            
+            <img class="header-profile-icon" src="images/header-profile-icon.gif" alt="profile-icon">
+            
+        </div>
+    
+    </div>
+
+</div>
+    </div>
+    </div>
+    </div>
+   
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for products...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div class="filter-container">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy">
+            <option value="name">Name</option>
+            <option value="MRP">MRP</option>
+        </select>
+        <label for="category">Filter by Category:</label>
+        <select id="category">
+            <option value="all">All</option>
+            <option value="Pain Relief">Pain Relief</option>
+            <option value="Vitamins and Supplements">Vitamins and Supplements</option>
+            <option value="Cold and Flu Relief">Cold and Flu Relief</option>
+            <option value="First Aid Supplies">First Aid Supplies</option>
+        </select>
+        <button id="applyFilters">Apply Filters</button>
+    </div>
+
+    <main>
+        
+    </main>
+
+    
+   
+
+    <div class="pagination">
+        <button id="prevButton" disabled>Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+    <footer>
+        <p>&copy; 2023 Medications and Healthcare Products Catalog</p>
+    </footer>
+
+    <script> products = [
+        { name: 'Paracetamol Tablets', description: 'Effective for reducing fever and relieving mild to moderate pain.', MRP: '₹ 199', category: 'Pain Relief', image: 'images/photo1.jpg' },
+        { name: 'Ibuprofen Capsules', description: 'Non-prescription pain relief for headaches, muscle aches, and more.', MRP: '₹ 249', category: 'Pain Relief', image: 'images/photo2.jpg' },
+        { name: 'Aspirin Tablets', description: 'Classic pain reliever for minor aches and pains.', MRP: '₹ 149', category: 'Pain Relief', image: 'images/photo3.jpg' },
+        { name: 'Diclofenac Gel', description: 'Topical gel for localized pain relief, including arthritis.', MRP: '₹ 349', category: 'Pain Relief', image: 'images/photo4.jpg' },
+        { name: 'Calcium Supplements', description: 'Supports bone health and muscle function.', MRP: '₹ 269', category: 'Vitamins and Supplements', image: 'images/photo5.jpg' },
+        { name: 'Vitamin D3 Drops', description: 'Essential for strong bones and a healthy immune system.', MRP: '₹ 199', category: 'Vitamins and Supplements', image: 'images/photo6.jpg' },
+        { name: 'Probiotic Capsules', description: 'Promotes gut health and digestive balance.', MRP: '₹ 299', category: 'Vitamins and Supplements', image: 'images/photo7.jpg' },
+        { name: 'Vitamin B Complex', description: 'Boosts energy and supports overall health.', MRP: '₹ 249', category: 'Vitamins and Supplements', image: 'images/photo8.jpg' },
+        { name: 'Cough Syrup', description: 'Relieves coughs and soothes sore throats.', MRP: '₹ 169', category: 'Cold and Flu Relief', image: 'images/photo9.jpg' },
+        { name: 'Nasal Saline Spray', description: 'Provides gentle relief for dry or stuffy noses.', MRP: '₹ 119', category: 'Cold and Flu Relief', image: 'images/photo10.jpg' },
+        { name: 'Antibacterial Hand Gel', description: 'Kills germs and bacteria without water.', MRP: '₹ 99', category: 'Cold and Flu Relief', image: 'images/photo11.jpg' },
+        { name: 'Emergency First Aid Kit', description: 'Essential supplies for unexpected injuries.', MRP: '₹ 899', category: 'First Aid Supplies', image: 'images/photo12.jpg' },
+        { name: 'Digital Thermometer', description: 'Quick and accurate temperature readings.', MRP: '₹ 1199', category: 'First Aid Supplies', image: 'images/photo13.jpg' },
+        { name: 'Adhesive Bandages', description: 'Waterproof bandages for minor cuts and scrapes.', MRP: '₹ 69', category: 'First Aid Supplies', image: 'images/photo14.jpg' },
+        { name: 'Hydrocortisone Cream', description: 'Relieves itching and skin irritations.', MRP: '₹ 149', category: 'First Aid Supplies', image: 'images/photo15.jpg' },
+        { name: 'Migraine Relief Tablets', description: 'Specially formulated for fast relief from migraine headaches.', MRP: '₹ 349', category: 'Pain Relief', image: 'images/photo16.jpg' },
+        { name: 'Heat Pain Patch', description: 'Provides long-lasting heat therapy for muscle pain and stiffness.', MRP: '₹ 199', category: 'Pain Relief', image: 'images/photo17.jpg' },
+        { name: 'Glucosamine Chondroitin Supplements', description: 'Supports joint health and reduces arthritis discomfort.', MRP: '₹ 449', category: 'Pain Relief', image: 'images/photo18.jpg' },
+        { name: 'Anti-Inflammatory Cream', description: 'Reduces inflammation and swelling due to injuries.', MRP: '₹ 299', category: 'Pain Relief', image: 'images/photo19.jpg' },
+        { name: 'Vitamin E Capsules', description: 'Promotes skin health and antioxidant protection.', MRP: '₹ 149', category: 'Vitamins and Supplements', image: 'images/photo20.jpg' },
+        { name: 'Protein Powder', description: 'Provides a source of protein for muscle recovery and growth.', MRP: '₹ 2500', category: 'Vitamins and Supplements', image: 'images/photo21.jpg' },
+        { name: 'Vitamin A Supplements', description: 'Supports eye health and the immune system.', MRP: '₹ 129', category: 'Vitamins and Supplements', image: 'images/photo22.jpg' },
+        { name: 'Decongestant Tablets', description: 'Relieves sinus congestion and pressure.', MRP: '₹ 109', category: 'Cold and Flu Relief', image: 'images/photo23.jpg' },
+        { name: 'Vaporizing Rub', description: 'Soothes chest and throat discomfort due to colds.', MRP: '₹ 99', category: 'Cold and Flu Relief', image: 'images/photo24.jpg' },
+        { name: 'Emergency First Aid Manual', description: 'Comprehensive guide for handling injuries and emergencies.', MRP: '₹ 199', category: 'First Aid Supplies', image: 'images/photo25.jpg' },
+        { name: 'Alcohol-Free Hand Sanitizer', description: 'Kills germs without drying the skin.', MRP: '₹ 89', category: 'First Aid Supplies', image: 'images/photo26.jpg' },
+        { name: 'Burn Cream', description: 'Cools and soothes minor burns and sunburns.', MRP: '₹ 99', category: 'First Aid Supplies', image: 'images/photo27.jpg' },
+         
+        ];
+        
+        
+        
+        const productsPerPage = 9;
+        
+        
+        let currentPage = 0;
+        
+        
+        let productsToShow = [];
+        
+        
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+        
+         
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        
+         
+        const sortBySelect = document.getElementById('sortBy');
+        const categorySelect = document.getElementById('category');
+        const applyFiltersButton = document.getElementById('applyFilters');
+        
+         
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCounter = document.getElementById('cartCounter');
+        
+         
+        if (!sessionStorage.getItem('cart')) {
+            sessionStorage.setItem('cart', JSON.stringify([]));
+        }
+        
+        
+        function displayProducts() {
+             
+            const startIndex = currentPage * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+        
+             
+            const productContainer = document.querySelector('main');
+        
+             
+            productContainer.innerHTML = '';
+        
+             
+            for (let i = startIndex; i < endIndex && i < productsToShow.length; i++) {
+                const product = productsToShow[i];
+        
+                 
+                const productSection = document.createElement('section');
+                productSection.classList.add('product');
+                
+                productSection.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p><strong>MRP:</strong> ${product.MRP}</p>
+                    <button onclick="openProductDetails(${i})">Show Details</button>
+                    <button onclick="addToCart(${i})">Add to Cart</button>
+                `;
+        
+                
+                productContainer.appendChild(productSection);
+            }
+        
+             
+            prevButton.disabled = currentPage === 0;
+            nextButton.disabled = endIndex >= productsToShow.length;
+        }
+        
+         
+        function addToCart(index) {
+            const product = productsToShow[index];
+            const cart = JSON.parse(sessionStorage.getItem('cart'));
+        
+             
+            const existingItemIndex = cart.findIndex(item => item.name === product.name);
+        
+            if (existingItemIndex !== -1) {
+                 
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                
+                product.quantity = 1;
+                cart.push(product);
+            }
+        
+            
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+        
+            
+            updateCartCounter(cart.length);
+        }
+        
+         
+        function updateCartCounter(count) {
+            cartCounter.textContent = count;
+        }
+        
+         
+        function applyFilters() {
+            const sortBy = sortBySelect.value;
+            const categoryFilter = categorySelect.value;
+        
+            
+            productsToShow.sort((a, b) => {
+                if (sortBy === 'name') {
+                    return a.name.localeCompare(b.name);
+                } else if (sortBy === 'MRP') {
+                    return parseFloat(a.MRP) - parseFloat(b.MRP);
+                }
+            });
+        
+            
+            productsToShow = categoryFilter === 'all'
+                ? products.slice() // Clone the original array
+                : products.filter(product => product.category === categoryFilter);
+        
+            
+            currentPage = 0;
+        
+            
+            displayProducts();
+        }
+        
+         
+        applyFiltersButton.addEventListener('click', () => {
+            applyFilters();
+        });
+        
+         
+        sortBySelect.addEventListener('change', () => {
+            applyFilters();
+        });
+        
+        categorySelect.addEventListener('change', () => {
+            applyFilters();
+        });
+        
+         
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+        
+             
+            productsToShow = products.filter(product =>
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+        
+            
+            currentPage = 0;
+        
+             
+            displayProducts();
+        }
+        
+         
+        searchButton.addEventListener('click', () => {
+            performSearch();
+        });
+        
+        
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+         
+        function loadNextPage() {
+            currentPage++;
+            displayProducts();
+        }
+        
+         
+        function loadPrevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                displayProducts();
+            }
+        }
+        
+        
+        nextButton.addEventListener('click', () => {
+            loadNextPage();
+        });
+        
+         
+        prevButton.addEventListener('click', () => {
+            loadPrevPage();
+        });
+        
+         
+        applyFilters();
+        
+         
+        function openProductDetails(index) {
+            const product = productsToShow[index];
+            const productImage = product.image;
+        
+            
+            sessionStorage.setItem('selectedProduct', JSON.stringify(product));
+        
+            
+            window.location.href = `product-details.html?image=${productImage}`;
+        }
+        </script>
+</body>
+</html>

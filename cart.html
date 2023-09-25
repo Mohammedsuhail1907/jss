@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            background-color:#333;
+            color: white;
+            padding: 10px;
+        }
+
+        .cart {
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            background-color: rgb(206, 203, 203);
+        }
+
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .cart button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 5%;
+        }
+
+        .cart button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-button {
+            background-color: #ff4444;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+
+         
+        .address-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .address-label {
+            font-weight: bold;
+        }
+
+        .address-input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+         
+        .quantity-dropdown {
+            width: 51%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 50px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+     
+    <div class="cart">
+        <ul id="cart-items">
+            
+        </ul>
+        <p>Total: &#8377;<span id="cart-total"></span></p>
+
+         
+        <div class="address-section">
+            <h2>Shipping Address</h2>
+            <label for="name" class="address-label">Name:</label>
+            <input type="text" id="name" class="address-input" placeholder="Full Name">
+            
+            <label for="address" class="address-label">Address:</label>
+            <textarea id="address" class="address-input" placeholder="123 Main St, City, Country"></textarea>
+
+            <label for="pincode" class="address-label">Pincode:</label>
+            <input type="text" id="pincode" class="address-input" placeholder="Enter Pincode">
+
+            <label for="Phone number" class="address-label">Phone number</label>
+            <input type="text" id="phone-number" class="address-input" placeholder="Enter Phone">
+        </div>
+
+        <button onclick="checkout()">Checkout</button>
+        <a href="javascript:history.back()"><button>Shop More</button></a>
+    </div>
+
+ <script>
+     
+const cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+ 
+function calculateCartTotal() {
+    return cartItems.reduce((total, item) => total + (extractPrice(item.MRP) * item.quantity), 0);
+}
+
+ 
+function extractPrice(priceString) {
+    const numericPart = priceString.replace(/[^0-9.]/g, '');
+    return parseFloat(numericPart);
+}
+
+ 
+function addToCart(name, MRP) {
+    
+    const existingItem = cartItems.find(item => item.name === name);
+
+    if (existingItem) {
+        
+        existingItem.quantity += 1;
+    } else {
+         
+        const newItem = {
+            name: name,
+            MRP: MRP,
+            quantity: 1  
+        };
+        cartItems.push(newItem);
+    }
+
+     
+    sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+    
+    updateCartDisplay();
+}
+
+ 
+function updateCartDisplay() {
+    const cartItemsList = document.getElementById('cart-items');
+    const cartTotalSpan = document.getElementById('cart-total');
+
+     
+    cartItemsList.innerHTML = '';
+
+    cartItems.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - ${item.MRP} x ${item.quantity}`;
+
+         
+        const quantityDropdown = document.createElement('select');
+        quantityDropdown.className = 'quantity-dropdown';
+
+         
+        for (let i = 1; i <= 10; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            quantityDropdown.appendChild(option);
+        }
+
+        quantityDropdown.value = item.quantity;  
+
+         
+        quantityDropdown.addEventListener('change', (event) => {
+            const newQuantity = parseInt(event.target.value);
+            item.quantity = newQuantity;
+            sessionStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCartDisplay();
+        });
+
+        listItem.appendChild(quantityDropdown);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'delete-button';
+        deleteButton.onclick = () => deleteCartItem(item);  
+        listItem.appendChild(deleteButton);
+
+        cartItemsList.appendChild(listItem);
+    });
+
+    
+    const cartTotal = calculateCartTotal();
+
+     
+    cartTotalSpan.textContent = + cartTotal.toFixed(2);
+}
+
+ 
+function deleteCartItem(item) {
+    const itemIndex = cartItems.indexOf(item);
+    if (itemIndex !== -1) {
+        
+        cartItems.splice(itemIndex, 1);
+
+         
+        sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+         
+        updateCartDisplay();
+    }
+}
+
+ 
+function checkout() {
+    const name = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const pincode = document.getElementById('pincode').value;
+
+     
+
+    cartItems.length = 0;  
+
+    
+    sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+     
+    updateCartDisplay();
+}
+
+ 
+window.onload = function () {
+    updateCartDisplay();
+};
+
+ </script>
+    
+    
+</body>
+</html>
